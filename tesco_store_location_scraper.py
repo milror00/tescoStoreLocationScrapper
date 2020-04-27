@@ -1,3 +1,5 @@
+import sys
+
 import lxml
 import requests
 import urllib3
@@ -10,8 +12,6 @@ class TescoLocationScraper():
 
     def __init__(self):
         logging.getLogger("urllib3").setLevel(logging.WARNING)
-        self.start = 0
-        self.finish = 0
         self.invalidStoreID = []
         self.stores = []
         self.url = 'http://www.tesco.com/store-locator/uk/?bID={}'
@@ -46,8 +46,18 @@ class TescoLocationScraper():
         return self.stores, self.invalidStoreID
 
 if __name__ == '__main__':
+    print(sys.argv)
+    if len(sys.argv) != 3:
+        print('Invalid number of parameters:')
+        print('Enter storeID Range eg. ')
+        print('python tesco_store_location_scraper.py 3038 3045')
+        exit(1)
+    start = int(sys.argv[1]);
+    finish = int(sys.argv[2]);
+    if start > finish:
+        print('Invalid range : start cannot be greater than end')
     scraper = TescoLocationScraper()
-    stores,invalidStores = scraper.iterate_through_tesco_store_pages(3038,3045)
+    stores,invalidStores = scraper.iterate_through_tesco_store_pages(start,finish)
     print('Valid Stores:')
     print('|Store ID     |Store Name      |Address      |Telephone |')
     print('|---------|---------------------------------------|---------------------------------------|---------------|')
