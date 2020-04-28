@@ -1,5 +1,4 @@
 import sys
-
 import lxml
 import requests
 import urllib3
@@ -7,6 +6,7 @@ from io import BytesIO
 from lxml import etree
 from lxml import html
 import logging
+
 
 class TescoLocationScraper():
 
@@ -16,11 +16,11 @@ class TescoLocationScraper():
         self.stores = []
         self.url = 'http://www.tesco.com/store-locator/uk/?bID={}'
 
-    def getURL(self, url ):
+    def getURL(self, url):
         http = urllib3.PoolManager()
         self.response = http.request('GET', url)
 
-    def getStorLocation(self,url, storeID):
+    def getStorLocation(self, url, storeID):
         details = {}
         self.getURL(url)
         dom = lxml.html.parse(BytesIO(self.response.data))
@@ -30,7 +30,7 @@ class TescoLocationScraper():
             return False
         details['storeName'] = xpatheval('.//*[@class="store-name"]')[0].text
         details['address'] = xpatheval('.//*[@itemprop="streetAddress"]')[0].text
-        details['telephone'] =  xpatheval('.//*[@itemprop="telephone"]')[0].text
+        details['telephone'] = xpatheval('.//*[@itemprop="telephone"]')[0].text
         details['storeID'] = str(storeID)
         self.stores.append(details)
         return True
@@ -45,6 +45,7 @@ class TescoLocationScraper():
             start = start + 1
         return self.stores, self.invalidStoreID
 
+
 if __name__ == '__main__':
     print(sys.argv)
     if len(sys.argv) != 3:
@@ -52,15 +53,16 @@ if __name__ == '__main__':
         print('Enter storeID Range eg. ')
         print('python tesco_store_location_scraper.py 3038 3045')
         exit(1)
-    start = int(sys.argv[1]);
-    finish = int(sys.argv[2]);
+    start = int(sys.argv[1])
+    finish = int(sys.argv[2])
     if start > finish:
         print('Invalid range : start cannot be greater than end')
     scraper = TescoLocationScraper()
-    stores,invalidStores = scraper.iterate_through_tesco_store_pages(start,finish)
+    stores, invalidStores = scraper.iterate_through_tesco_store_pages(start, finish)
     print('Valid Stores:')
     print('|Store ID     |Store Name      |Address      |Telephone |')
-    print('|---------|---------------------------------------|---------------------------------------|---------------|')
+    print('|---------|---------------------------------------|------------------'
+          '---------------------|---------------|')
     for store in stores:
         print('|{0: <8}|{1: <40}|{2: <60}|{3: <15}'.format(
               store['storeID'],
@@ -69,5 +71,4 @@ if __name__ == '__main__':
               store['telephone']))
     print('Invalid StoreIDs :')
     for invalid_store in invalidStores:
-        print('{0: <8}'.format(
-        invalid_store['storeID'],))
+        print('{0: <8}'.format(invalid_store['storeID']))

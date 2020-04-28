@@ -1,0 +1,14 @@
+language: python
+python:
+- 3.6
+env:
+  global:
+  - secure: "<encrypted MYPYPI_USER=username>"
+  - secure: "<encrypted MYPYPI_PASS=p@ssword>"
+before_install:
+- pip install poetry
+install:
+- poetry install
+script:
+- poetry run flake8 app
+- python ./app/tesco_score_location_scraper.py
