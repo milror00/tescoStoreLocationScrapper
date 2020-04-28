@@ -1,3 +1,7 @@
+
+### Status
+[![Build Status](https://travis-ci.com/milror00/TescoStoreLocationScraper.png)](https://travis-ci.com/milror00/TescoStoreLocationScraper.svg?branch=master)
+
 # Tesco Store Location Scrapper
 
 This is a demo project that uses python - request and behave to scrape tesco's published stored locations.
@@ -10,6 +14,7 @@ Requirements to run :
 * requests==2.23.0
 * lxml==4.5.0
 *urlib3==1.25.9
+
 
 
 Steps for installation:
