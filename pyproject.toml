@@ -17,8 +17,6 @@ documentation = ""
 # Requirements
 [tool.poetry.dependencies]
 python = "^3.5"
-requests = "^2.18"
-lxml = "^4.5.0"
 poetry = "^1.0.5"
 flake8 ="^3.7.9"
 
