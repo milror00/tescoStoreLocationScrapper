@@ -7,6 +7,7 @@ env:
   - secure: "<encrypted MYPYPI_PASS=p@ssword>"
 before_install:
 - pip install poetry
+- pip install scrapy
 install:
 - poetry install
 script:
