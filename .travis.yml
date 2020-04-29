@@ -12,5 +12,4 @@ install:
 - poetry install
 script:
 - poetry run flake8 app
-module:
 - scrapy crawler storelocationspider
