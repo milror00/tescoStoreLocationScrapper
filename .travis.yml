@@ -11,4 +11,5 @@ install:
 - poetry install
 script:
 - poetry run flake8 app
-- python ./app/tesco_store_location_scraper.py 3038 3045
+module:
+- scrapy crawler storelocationspider
