@@ -2,7 +2,7 @@
 ### Status
 [![Build Status](https://travis-ci.com/milror00/TescoStoreLocationScraper.png)](https://travis-ci.com/milror00/TescoStoreLocationScraper.svg?branch=master)
 
-# Tesco Store Location Scrapper
+# Tesco Store Location Scraper
 
 This is a demo project that uses python - and scrapy to scrape tesco's published stored locations.
 
