@@ -1,7 +1,7 @@
 from scrapy.exporters import JsonItemExporter
 
 
-class JsonTescoPipeline(object):
+class JsonItemPipeline(object):
 
     def __init__(self):
         self.file = open("data_export.json", 'wb')

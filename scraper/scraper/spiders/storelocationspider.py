@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
-import MySQLdb
+# -*- coding: utf-8 -*
 import scrapy
 
 
-
-
 class StorelocationspiderSpider(scrapy.Spider):
-
-
     name = 'storelocationspider'
     allowed_domains = ['tesco.com']
     start_urls = []
@@ -21,7 +16,6 @@ class StorelocationspiderSpider(scrapy.Spider):
         self.logger.debug('End: ' + str(self.end))
         self.logger.debug('db: ' + str(self.db))
         self.logger.debug("Tesco spider initialised")
-
 
     @classmethod
     def setInitialVariables(cls, start, end, db):
@@ -41,10 +35,9 @@ class StorelocationspiderSpider(scrapy.Spider):
         for store_response in response.css('body #content'):
             storename = store_response.css('.store-details .store-name::text').get()
             if storename is not None:
-                yield{
+                yield {
                     'storeID': store_response.css('.store-details .store-name').attrib["title"],
                     'storeName': storename,
                     'address': store_response.css('.store-details .address .text::text').get(),
                     'telephone': store_response.css('.store-details .phone-number .text::text').get()
                 }
-

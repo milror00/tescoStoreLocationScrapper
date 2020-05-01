@@ -80,7 +80,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'scraper.scraper.json_tesco_pipeline.JsonTescoPipeline': 300,
+    'scraper.scraper.json_item_pipeline.JsonItemPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
