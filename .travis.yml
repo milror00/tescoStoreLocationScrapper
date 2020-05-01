@@ -12,4 +12,4 @@ install:
 - poetry install
 script:
 - poetry run flake8 app
-- ./main.py
+- python main.py
