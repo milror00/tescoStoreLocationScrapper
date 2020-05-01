@@ -8,20 +8,19 @@ class StorelocationspiderSpider(scrapy.Spider):
     start_urls = []
     start = 0
     end = 0
-    db = 0
+
 
     def __init__(self):
         super(StorelocationspiderSpider, self)
         self.logger.debug('Start: ' + str(self.start))
         self.logger.debug('End: ' + str(self.end))
-        self.logger.debug('db: ' + str(self.db))
         self.logger.debug("Tesco spider initialised")
 
     @classmethod
-    def setInitialVariables(cls, start, end, db):
+    def setInitialVariables(cls, start, end):
         cls.start = start
         cls.end = end
-        cls.db = db
+
 
     def start_requests(self):
         self.logger.debug('Tesco spider start_requests function')
