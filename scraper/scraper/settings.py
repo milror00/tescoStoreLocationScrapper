@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for storelocator project
+# Scrapy settings for scraper project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,21 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'storelocator'
+BOT_NAME = 'tesco_scraper'
 
-SPIDER_MODULES = ['storelocator.spiders']
-NEWSPIDER_MODULE = 'storelocator.spiders'
+SPIDER_MODULES = ['scraper.scraper.spiders']
+NEWSPIDER_MODULE = 'scraper.scraper.spiders'
+
+#LOG_FILE = 'scrapy.log'
+LOG_ENABLED = True
+LOG_LEVEL = 'DEBUG'
+LOG_ENCODING = 'utf-8'
+LOG_STDOUT =True
+
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'storelocator (+http://www.yourdomain.com)'
+#USER_AGENT = 'scraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +54,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'storelocator.middlewares.StorelocatorSpiderMiddleware': 543,
+#    'scraper.middlewares.StorelocatorSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'storelocator.middlewares.StorelocatorDownloaderMiddleware': 543,
+#    'scraper.middlewares.StorelocatorDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +72,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'storelocator.pipelines.StorelocatorPipeline': 300,
+#    'scraper.pipelines.StorelocatorPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

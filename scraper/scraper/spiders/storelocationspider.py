@@ -2,22 +2,39 @@
 import scrapy
 
 
+
+
 class StorelocationspiderSpider(scrapy.Spider):
     name = 'storelocationspider'
-    allowed_domains = ['http://www.tesco.com']
-    start_urls = ['http://http://www.tesco.com/']
+    allowed_domains = ['tesco.com']
+    start_urls = []
+    start = 0
+    end = 0
+    db = 0
 
-    def __init__(self, start=0, end=0, *args, **kwargs):
-        super(StorelocationspiderSpider, self).__init__(*args, **kwargs)
-        self.start = int(start)
-        self.end = int(end)
+    def __init__(self):
+        super(StorelocationspiderSpider, self)
+        self.logger.debug('Start: ' + str(self.start))
+        self.logger.debug('End: ' + str(self.end))
+        self.logger.debug('db: ' + str(self.db))
+        self.logger.debug("Tesco spider initialised")
+
+
+    @classmethod
+    def setInitialVariables(cls, start, end, db):
+        cls.start = start
+        cls.end = end
+        cls.db = db
 
     def start_requests(self):
-        for i in range(self.start, self.end):
+        self.logger.debug('Tesco spider start_requests function')
+        for i in range(int(self.start), int(self.end)):
             url = 'http://www.tesco.com/store-locator/uk/?bID=%s' % str(i)
+            self.logger.debug('Spider requesting : %s', url)
             yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
+        self.logger.info('Parse function called on %s', response.url)
         for store_response in response.css('body #content'):
             storename = store_response.css('.store-details .store-name::text').get()
             if storename is not None:

@@ -1,3 +1,4 @@
 /.idea/
 /poetry.lock
-/storelocator/stores.jl
+/scraper/stores.jl
+/.vagrant/

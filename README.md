@@ -19,10 +19,23 @@ Steps for installation:
 
 1. Clone git repo
 1. pip install -r requirements.txt
-1. run scrapy crawl storelocationspider -o stores.jl -a start=3038 -a end=3045
-(the start end refer to the storeID)
+1. run scrapy crawl storelocationspider -o stores.jl -a start=3038 -a end=3045 -db=1
+(the start end refer to the storeID, db 0 = no db stdout 1 = use mysql db in vagrant)
 
-# Results
+# vagrant
+
+To use vagrant do :
+
+1. Install vagrant
+1. Vagrant up 
+1. In a terminal : vagrant ssh
+1. sudo nano /etc/mysql/my.cnf change: bind-address = 0.0.0.0
+1. Ctrl-x , y 
+1. Restart mysql : sudo /etc/init.d/mysql restart
+1. connect to mysql : username vagrant password : password host: 127.0.0.1
+
+
+# Results - for Stdout
 The results can be found in the stores.jl file located in /storelocator
 
 Valid Stores:
