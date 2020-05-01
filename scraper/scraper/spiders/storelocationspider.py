@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+import MySQLdb
 import scrapy
 
 
 
 
 class StorelocationspiderSpider(scrapy.Spider):
+
+
     name = 'storelocationspider'
     allowed_domains = ['tesco.com']
     start_urls = []

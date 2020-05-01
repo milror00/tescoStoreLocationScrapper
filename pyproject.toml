@@ -18,7 +18,11 @@ documentation = ""
 [tool.poetry.dependencies]
 python = "^3.5"
 poetry = "^1.0.5"
-flake8 ="^3.7.9"
+flake8 = "^3.7.9"
+#mysql = "^0.0.2"
+#mysqlclient = "^1.4.6"
+#mysql-connector = "^2.2.9"
+#Scrapy= "^2.1.0"
 
 # The typing module is not in the stdlib in Python 2.7 and 3.4
 typing = { version = "^3.6", python = "~2.7 || ~3.4" }

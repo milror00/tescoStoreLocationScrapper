@@ -2,3 +2,5 @@
 /poetry.lock
 /scraper/stores.jl
 /.vagrant/
+/scrapy.log
+/data_export.json

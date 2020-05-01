@@ -20,6 +20,14 @@ LOG_LEVEL = 'DEBUG'
 LOG_ENCODING = 'utf-8'
 LOG_STDOUT =True
 
+#MySQL Database connection details:
+DB_SETTINGS = {
+    'db': "tesco",
+    'user': 'vagrant',
+    'passwd': 'password',
+    'host': '127.0.0.1',
+}
+
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -71,9 +79,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scraper.pipelines.StorelocatorPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scraper.scraper.json_tesco_pipeline.JsonTescoPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
